@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import jsPDF from 'jspdf';
 import * as XLSX from 'xlsx';
 import { useNavigate } from 'react-router-dom';
+import { useTable } from 'react-table';
 
 const Dashboard = () => {
   const [entries, setEntries] = useState([]);
@@ -77,6 +78,30 @@ const Dashboard = () => {
     XLSX.writeFile(wb, 'entries.xlsx');
   };
 
+  const columns = useMemo(
+    () => [
+      {
+        Header: 'Type',
+        accessor: 'type',
+      },
+      {
+        Header: 'Timestamp',
+        accessor: 'timestamp',
+        Cell: ({ value }) => new Date(value).toLocaleString(),
+      },
+      {
+        Header: 'Note',
+        accessor: 'note',
+      },
+    ],
+    []
+  );
+
+  const data = useMemo(() => entries, [entries]);
+
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable({ columns, data });
+
   return (
     <div>
       <h1>Dashboard</h1>
@@ -96,22 +121,31 @@ const Dashboard = () => {
       <button onClick={exportCSV}>Export CSV</button>
       <button onClick={exportXLS}>Export XLS</button>
       <button onClick={logout}>Logout</button>
-      <table>
+      <table {...getTableProps()}>
         <thead>
-          <tr>
-            <th>Type</th>
-            <th>Timestamp</th>
-            <th>Note</th>
-          </tr>
-        </thead>
-        <tbody>
-          {entries.map((entry) => (
-            <tr key={entry._id}>
-              <td>{entry.type}</td>
-              <td>{new Date(entry.timestamp).toLocaleString()}</td>
-              <td>{entry.note}</td>
+          {headerGroups.map((headerGroup, headerGroupIndex) => (
+            <tr {...headerGroup.getHeaderGroupProps()} key={headerGroupIndex}>
+              {headerGroup.headers.map((column, columnIndex) => (
+                <th {...column.getHeaderProps()} key={columnIndex}>
+                  {column.render('Header')}
+                </th>
+              ))}
             </tr>
           ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.map((row, rowIndex) => {
+            prepareRow(row);
+            return (
+              <tr {...row.getRowProps()} key={rowIndex}>
+                {row.cells.map((cell, cellIndex) => (
+                  <td {...cell.getCellProps()} key={cellIndex}>
+                    {cell.render('Cell')}
+                  </td>
+                ))}
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
