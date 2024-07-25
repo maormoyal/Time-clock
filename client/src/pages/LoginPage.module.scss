@@ -18,15 +18,8 @@
     border-radius: 4px;
   }
 
-  button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #0056b3;
-    }
+  .error {
+    color: red;
+    margin-bottom: 10px;
   }
 }

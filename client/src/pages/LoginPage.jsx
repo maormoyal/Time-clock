@@ -6,6 +6,7 @@ import styles from './LoginPage.module.scss';
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -21,12 +22,13 @@ const LoginPage = () => {
       navigate('/dashboard');
     } catch (error) {
       console.error('Login failed', error);
+      setError(error.response.data);
     }
   };
 
   return (
     <div className={styles.loginPage}>
-      <h1>Login</h1>
+      <span className={styles.error}>{error}</span>
       <input
         type='email'
         placeholder='Email'

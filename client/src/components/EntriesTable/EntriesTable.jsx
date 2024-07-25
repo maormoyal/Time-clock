@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { useTable } from 'react-table';
 import styles from './EntriesTable.module.scss';
 
@@ -28,33 +28,35 @@ const EntriesTable = ({ entries }) => {
     useTable({ columns, data });
 
   return (
-    <table {...getTableProps()} className={styles.entriesTable}>
-      <thead>
-        {headerGroups.map((headerGroup, headerGroupIndex) => (
-          <tr {...headerGroup.getHeaderGroupProps()} key={headerGroupIndex}>
-            {headerGroup.headers.map((column, columnIndex) => (
-              <th {...column.getHeaderProps()} key={columnIndex}>
-                {column.render('Header')}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row, rowIndex) => {
-          prepareRow(row);
-          return (
-            <tr {...row.getRowProps()} key={rowIndex}>
-              {row.cells.map((cell, cellIndex) => (
-                <td {...cell.getCellProps()} key={cellIndex}>
-                  {cell.render('Cell')}
-                </td>
+    <div className={styles.entriesTableContainer}>
+      <table {...getTableProps()} className={styles.entriesTable}>
+        <thead>
+          {headerGroups.map((headerGroup, headerGroupIndex) => (
+            <tr {...headerGroup.getHeaderGroupProps()} key={headerGroupIndex}>
+              {headerGroup.headers.map((column, columnIndex) => (
+                <th {...column.getHeaderProps()} key={columnIndex}>
+                  {column.render('Header')}
+                </th>
               ))}
             </tr>
-          );
-        })}
-      </tbody>
-    </table>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.map((row, rowIndex) => {
+            prepareRow(row);
+            return (
+              <tr {...row.getRowProps()} key={rowIndex}>
+                {row.cells.map((cell, cellIndex) => (
+                  <td {...cell.getCellProps()} key={cellIndex}>
+                    {cell.render('Cell')}
+                  </td>
+                ))}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

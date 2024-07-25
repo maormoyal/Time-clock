@@ -1,17 +1,40 @@
 .exportButtons {
-  display: flex;
-  justify-content: space-between;
+  position: relative;
+  display: inline-block;
   margin-bottom: 20px;
+  width: 150px;
+
+  button {
+    background-color: #1e293b;
+    color: #f8f8f8;
+    padding: 20px;
+    text-align: center;
+    border: none;
+    width: 100%;
+    border-radius: 0;
+    cursor: pointer;
+
+    &:hover {
+      color: #fff;
+      background-color: rgba(0, 27, 54, 0.9);
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #374151;
+    }
+  }
 }
 
-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
+.dropdownMenu {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #1e293b;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 0;
+  overflow: hidden;
 }

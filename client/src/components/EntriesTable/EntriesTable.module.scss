@@ -1,0 +1,39 @@
+.entriesTableContainer {
+  height: 50svh;
+  overflow-y: auto;
+}
+.entriesTable {
+  width: 100%;
+  //   border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: #8c9db9;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+  padding: 15px;
+  text-align: left;
+  color: #eef6ff;
+  border-bottom: 1px solid #374151;
+}
+
+th {
+  background-color: #001b36;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+tbody tr:nth-of-type(odd) {
+  background-color: #637488;
+}
+
+tbody tr:hover {
+  background-color: #1e293b;
+}
+
+tbody tr:last-of-type td {
+  border-bottom: none;
+}

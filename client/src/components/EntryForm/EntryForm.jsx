@@ -12,7 +12,7 @@ const EntryForm = ({ onAddEntry }) => {
     }
     onAddEntry(type, note);
     setNote('');
-    setType(''); // Reset the type to the placeholder
+    setType('');
   };
 
   return (

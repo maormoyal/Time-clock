@@ -1,7 +1,9 @@
 .entryForm {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  width: 40%;
+  min-width: 260px;
+  margin: 0 auto 40px;
 }
 
 select,
@@ -10,16 +12,4 @@ input {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-}
-
-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
 }
