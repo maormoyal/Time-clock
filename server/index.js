@@ -15,14 +15,17 @@ mongoose.connect(
   }
 );
 
+// Import routes
 const userRoutes = require('./routes/user');
 const timeEntryRoutes = require('./routes/timeEntry');
 const exportRoutes = require('./routes/export');
 
+// Health check endpoint
 app.get('/health', (req, res) => {
   res.send('Welcome to the Time Clock API');
 });
 
+// Use routes
 app.use('/api/users', userRoutes);
 app.use('/api/time-entries', timeEntryRoutes);
 app.use('/api/export', exportRoutes);

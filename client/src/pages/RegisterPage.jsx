@@ -1,41 +1,54 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import styles from './RegisterPage.module.scss';
 
 const RegisterPage = () => {
+  const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleRegister = async () => {
     try {
       await axios.post('http://localhost:5000/api/users/register', {
+        email,
         username,
         password,
       });
       navigate('/login');
     } catch (error) {
-      console.error(error);
+      console.error('Registration failed', error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className={styles.registerPage}>
+      <h1>Register</h1>
       <input
         type='text'
+        placeholder='User Name'
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        placeholder='Username'
+      />
+      <input
+        type='email'
+        placeholder='Email'
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
       />
       <input
         type='password'
+        placeholder='Password'
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        placeholder='Password'
       />
-      <button type='submit'>Register</button>
-    </form>
+      <button onClick={handleRegister}>Register</button>
+
+      <p className={styles.registerPrompt}>
+        have an account? <Link to='/login'>Login</Link>
+      </p>
+    </div>
   );
 };
 
