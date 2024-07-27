@@ -2,16 +2,17 @@ const express = require('express');
 const { Parser } = require('json2csv');
 const TimeEntry = require('../dbModels/TimeEntry');
 const router = express.Router();
-const jwt = require('jsonwebtoken');
+const { authenticate } = require('../middlewares/auth.middleware');
+// const jwt = require('jsonwebtoken');
 
-const authenticate = (req, res, next) => {
-  const token = req.headers.authorization.split(' ')[1];
-  jwt.verify(token, 'YOUR_SECRET_KEY', (err, decoded) => {
-    if (err) return res.status(401).send('Unauthorized');
-    req.userId = decoded.id;
-    next();
-  });
-};
+// const authenticate = (req, res, next) => {
+//   const token = req.headers.authorization.split(' ')[1];
+//   jwt.verify(token, 'YOUR_SECRET_KEY', (err, decoded) => {
+//     if (err) return res.status(401).send('Unauthorized');
+//     req.userId = decoded.id;
+//     next();
+//   });
+// };
 
 router.get('/csv', authenticate, async (req, res) => {
   try {
