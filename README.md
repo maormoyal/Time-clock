@@ -1,3 +1,4 @@
+
 This project is a web-based Time Clock application that allows employees to log their entry, break, and exit times throughout the day. It also provides features to view previous entries and export data in various formats.
 
 ## Table of Contents
