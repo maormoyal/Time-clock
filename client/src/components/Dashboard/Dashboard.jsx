@@ -24,9 +24,11 @@ const Dashboard = () => {
 
   return (
     <div className={styles.dashboard}>
-      <ExportButtons entries={entries} />
-      <EntryForm onAddEntry={handleAddEntry} />
-      <EntriesTable entries={entries} />
+      <div className={'content-width'}>
+        <ExportButtons entries={entries} />
+        <EntryForm onAddEntry={handleAddEntry} />
+        <EntriesTable entries={entries} />
+      </div>
     </div>
   );
 };

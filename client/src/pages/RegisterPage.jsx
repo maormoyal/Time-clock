@@ -24,7 +24,6 @@ const RegisterPage = () => {
 
   return (
     <div className={styles.registerPage}>
-      <h1>Register</h1>
       <input
         type='text'
         placeholder='User Name'

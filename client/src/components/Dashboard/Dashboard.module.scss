@@ -1,23 +1,10 @@
 .dashboard {
-  padding: 20px;
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
-  min-height: 80svh;
+  height: calc(100svh - 73px);
+  min-height: calc(100svh - 73px);
+  margin-top: 73px;
   overflow: hidden;
-  max-height: 30svh;
-
-  select,
-  input {
-    display: block;
-    max-width: 100%;
-    padding: 1rem;
-    font-family: inherit;
-    font-size: 1.6rem;
-    background-color: #fff;
-    border-radius: 0.6rem;
-    border: solid 0.1rem rgba(166, 175, 192, 0.5);
-    line-height: 1.4;
-  }
 }
 
 .title {

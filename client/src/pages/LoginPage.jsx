@@ -1,34 +1,27 @@
 import { useState } from 'react';
-import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import styles from './LoginPage.module.scss';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+
   const navigate = useNavigate();
+  const { login, error } = useAuth();
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post(
-        'http://localhost:5000/api/users/login',
-        {
-          email,
-          password,
-        }
-      );
-      localStorage.setItem('token', response.data.token);
+      await login(email, password);
       navigate('/dashboard');
     } catch (error) {
       console.error('Login failed', error);
-      setError(error.response.data);
     }
   };
 
   return (
     <div className={styles.loginPage}>
-      <span className={styles.error}>{error}</span>
+      {error && <p className={styles.error}>{error}</p>}
       <input
         type='email'
         placeholder='Email'

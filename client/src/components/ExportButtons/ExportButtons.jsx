@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ExportButtonsController } from './ExportButtons.ctrl';
 import styles from './ExportButtons.module.scss';
+import clsx from 'clsx';
 
 const ExportButtons = ({ entries }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -10,9 +11,16 @@ const ExportButtons = ({ entries }) => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  const exportDropdownClassNames = clsx(
+    isDropdownOpen ? styles.open : styles.closed,
+    styles.exportDropdown
+  );
+
   return (
     <div className={styles.exportButtons}>
-      <button onClick={toggleDropdown}>Export</button>
+      <button className={exportDropdownClassNames} onClick={toggleDropdown}>
+        Export
+      </button>
       {isDropdownOpen && (
         <div className={styles.dropdownMenu}>
           <button onClick={() => controller.exportPDF(entries)}>

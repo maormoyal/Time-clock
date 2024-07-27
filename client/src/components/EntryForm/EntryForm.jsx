@@ -7,7 +7,7 @@ const EntryForm = ({ onAddEntry }) => {
 
   const handleAddEntry = () => {
     if (type === '') {
-      alert('Please choose an action');
+      alert('Please select an action');
       return;
     }
     onAddEntry(type, note);
@@ -19,7 +19,7 @@ const EntryForm = ({ onAddEntry }) => {
     <div className={styles.entryForm}>
       <select value={type} onChange={(e) => setType(e.target.value)}>
         <option value='' disabled>
-          Choose action
+          Select an action
         </option>
         <option value='entry'>Entry</option>
         <option value='break'>Break</option>
@@ -29,9 +29,9 @@ const EntryForm = ({ onAddEntry }) => {
         type='text'
         value={note}
         onChange={(e) => setNote(e.target.value)}
-        placeholder='Note'
+        placeholder='Add note'
       />
-      <button onClick={handleAddEntry}>Add Entry</button>
+      <button onClick={handleAddEntry}>Add</button>
     </div>
   );
 };

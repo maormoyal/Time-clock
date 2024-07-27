@@ -3,9 +3,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100svh;
   background-color: #f4f4f4;
   font-family: Arial, sans-serif;
+  overflow: hidden;
 
   h1 {
     margin-bottom: 20px;
