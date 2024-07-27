@@ -14,7 +14,7 @@
     "build": "npm run build:client && npm run build:server",
     "build:client": "npm run build --prefix client",
     "build:server": "npm run build --prefix server",
-    "postinstall": "npm install --prefix client --legacy-peer-deps && npm install --prefix server --legacy-peer-deps",
+    "postinstall": "npm ci --prefix client --legacy-peer-deps && npm ci --prefix server --legacy-peer-deps",
     "heroku-postbuild": "npm run build"
   },
   "devDependencies": {
