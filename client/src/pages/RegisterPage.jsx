@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
+import useApi from '../hooks/useApi';
 import styles from './RegisterPage.module.scss';
 
 const RegisterPage = () => {
@@ -8,14 +8,11 @@ const RegisterPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { post, error } = useApi();
 
   const handleRegister = async () => {
     try {
-      await axios.post('http://localhost:5000/api/users/register', {
-        email,
-        username,
-        password,
-      });
+      await post('/users/register', { email, username, password });
       navigate('/login');
     } catch (error) {
       console.error('Registration failed', error);
@@ -24,6 +21,7 @@ const RegisterPage = () => {
 
   return (
     <div className={styles.registerPage}>
+      {error && <span className={styles.error}>{error}</span>}
       <input
         type='text'
         placeholder='User Name'
@@ -45,7 +43,7 @@ const RegisterPage = () => {
       <button onClick={handleRegister}>Register</button>
 
       <p className={styles.registerPrompt}>
-        have an account? <Link to='/login'>Login</Link>
+        Have an account? <Link to='/login'>Login</Link>
       </p>
     </div>
   );

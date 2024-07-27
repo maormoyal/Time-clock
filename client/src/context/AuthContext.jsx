@@ -1,66 +1,49 @@
 import { createContext, useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import useApi from '../hooks/useApi';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { get, post, error } = useApi();
 
   useEffect(() => {
     const checkAuth = async () => {
       const token = localStorage.getItem('token');
       if (token) {
         try {
-          const response = await axios.get(
-            'http://localhost:5000/api/users/me',
-            {
-              headers: { Authorization: `Bearer ${token}` },
-            }
-          );
-          setUser(response.data);
+          const response = await get('/users/me');
+          setUser(response);
         } catch (error) {
           console.error('Failed to fetch user', error);
           localStorage.removeItem('token');
-          setError('Failed to fetch user');
         }
       }
       setLoading(false);
     };
     checkAuth();
-  }, []);
+  }, [get]);
 
   const login = async (email, password) => {
-    setError(null);
-    let response;
     try {
-      response = await axios.post('http://localhost:5000/api/users/login', {
-        email,
-        password,
-      });
-      localStorage.setItem('token', response.data.token);
-      const userResponse = await axios.get(
-        'http://localhost:5000/api/users/me',
-        {
-          headers: { Authorization: `Bearer ${response.data.token}` },
-        }
-      );
-      setUser(userResponse.data);
+      const response = await post('/users/login', { email, password });
+      if (response.token) {
+        localStorage.setItem('token', response.token);
+        const userResponse = await get('/users/me');
+        setUser(userResponse);
+      } else {
+        throw new Error('Token is missing in the response');
+      }
     } catch (error) {
-      console.error('Login failed', error);
-      setError(error.response.data ?? 'Login failed');
+      console.error('Failed to login', error);
+      throw error;
     }
   };
 
   const logout = () => {
-    try {
-      localStorage.removeItem('token');
-      setUser(null);
-    } catch (error) {
-      console.error('Logout failed', error);
-      setError('Logout failed');
-    }
+    localStorage.removeItem('token');
+    setUser(null);
   };
 
   return (
