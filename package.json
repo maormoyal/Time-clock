@@ -1,6 +1,9 @@
 {
   "name": "time-clock-app",
   "version": "1.0.0",
+  "engines": {
+    "node": "20.x"
+  },
   "private": true,
   "scripts": {
     "start": "concurrently \"npm run start:client\" \"npm run start:server\"",
