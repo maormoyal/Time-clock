@@ -25,9 +25,9 @@ const Dashboard = () => {
   return (
     <div className={styles.dashboard}>
       <div className={'content-width'}>
-        <ExportButtons entries={entries} />
         <EntryForm onAddEntry={handleAddEntry} />
         <EntriesTable entries={entries} />
+        <ExportButtons entries={entries} />
       </div>
     </div>
   );

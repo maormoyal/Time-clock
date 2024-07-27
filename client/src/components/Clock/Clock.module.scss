@@ -1,21 +1,10 @@
 .clock {
-  //   font-size: 24px;
-  //   font-weight: bold;
-  //   color: #ef233c;
-  //   background-color: #1e293b;
-  //   border-radius: 120px;
-  //   text-align: center;
-  //   width: 120px;
-  //   height: 120px;
-  //   margin: 0 auto;
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
-  display: block;
-  text-decoration: none;
+  display: flex;
+  align-items: center;
   padding: 0.8rem 2.4rem;
   border-radius: 3rem;
-  background-color: #001b36;
+  // background-color: #001b36;
+  border: 1px solid #001b36;
   color: #ef233c;
   font-weight: 700;
   font-size: 1.5rem;

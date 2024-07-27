@@ -13,6 +13,8 @@
     width: 100%;
     border-radius: 0;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-size: 0.9rem;
 
     &:hover {
       color: #fff;
@@ -27,10 +29,37 @@
   button.exportDropdown {
     border-radius: 3rem;
     padding: 0.8rem 2.4rem;
+    color: #001b36;
+    background-color: #a6afc0;
+    font-size: 1rem;
+  }
+
+  button.exportDropdown:hover {
+    color: #fff;
+    background-color: #001b36;
+  }
+
+  button.exportDropdown::after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 0.5em;
+    vertical-align: 0.25em;
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+    transform: rotate(180deg);
+    transition: all 0.2s ease-in-out;
   }
 
   button.exportDropdown.open {
     border-radius: 0;
+  }
+
+  button.exportDropdown.open::after {
+    transform: rotate(0);
   }
 }
 
@@ -39,7 +68,7 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 100%;
+  bottom: 100%;
   left: 0;
   background-color: #1e293b;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
