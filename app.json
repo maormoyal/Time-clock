@@ -1,7 +1,7 @@
 {
-  "name": "time-clock-api",
+  "name": "time-clock-server",
   "scripts": {
-    "postdeploy": "cd server && npm install && npm run build"
+    "postdeploy": "npm install && npm run build"
   },
   "env": {
     "NODE_ENV": "production"
