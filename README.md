@@ -27,29 +27,27 @@ This project is a web-based Time Clock application that allows employees to log 
 
 ### Clone the Repository
 
-\`\`\`bash
+\`\`\`bash  
 git clone https://github.com/maormoyal/Time-clock.git
 \`\`\`
 
-\`\`\`bash
+\`\`\`bash  
 cd time-clock
 \`\`\`
 
 ### Install Dependencies
 
-\`\`\`bash
+\`\`\`bash  
 npm install
 \`\`\`
 
-\`\`\`bash
-cd client
-\`\`\`
+\`\`\`bash  
+cd client  
 npm install
 \`\`\`
 
-\`\`\`bash
-cd ../server
-\`\`\`
+\`\`\`bash  
+cd ../server  
 npm install
 \`\`\`
 
