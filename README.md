@@ -29,7 +29,10 @@ This project is a web-based Time Clock application that allows employees to log 
 
 \`\`\`bash
 git clone https://github.com/maormoyal/Time-clock.git
-cd time-clock-app
+\`\`\`
+
+\`\`\`bash
+cd time-clock
 \`\`\`
 
 ### Install Dependencies
