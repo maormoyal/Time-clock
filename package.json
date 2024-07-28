@@ -13,8 +13,7 @@
     "start:server:dev": "npm run start:dev --prefix server",
     "build": "npm run build:client && npm run build:server",
     "build:client": "npm run build --prefix client",
-    "build:server": "npm run build --prefix server",
-    "postinstall": "npm ci --prefix client --legacy-peer-deps && npm ci --prefix server --legacy-peer-deps"
+    "build:server": "npm run build --prefix server"
   },
   "devDependencies": {
     "concurrently": "^7.0.0",

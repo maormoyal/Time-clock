@@ -9,8 +9,11 @@
     "start:dev": "nodemon index.js",
     "build": "echo 'Server build script (if needed)'",
     "serve": "node dist/index.js",
-    "build:prod": "babel src -d dist",
-    "heroku-postbuild": "npm install --prefix ../client && npm run build --prefix ../client"
+    "build:prod": "babel src -d dist"
+  },
+  "engines": {
+    "node": "20.x",
+    "npm": ">=6.14.8"
   },
   "keywords": [],
   "author": "",

@@ -1,4 +1,3 @@
-
 This project is a web-based Time Clock application that allows employees to log their entry, break, and exit times throughout the day. It also provides features to view previous entries and export data in various formats.
 
 ## Table of Contents
@@ -106,7 +105,7 @@ VITE_API_BASE_URL=http://localhost:5000/api
 ### .env.production
 
 \`\`\`plaintext
-VITE_API_BASE_URL=https://vercel/api
+VITE_API_BASE_URL=https://not-working/api
 \`\`\`
 
 ## Contributing
