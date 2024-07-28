@@ -9,7 +9,8 @@
     "start:dev": "nodemon index.js",
     "build": "echo 'Server build script (if needed)'",
     "serve": "node dist/index.js",
-    "build:prod": "babel src -d dist"
+    "build:prod": "babel src -d dist",
+    "heroku-postbuild": "npm install --prefix ../client && npm run build --prefix ../client"
   },
   "keywords": [],
   "author": "",

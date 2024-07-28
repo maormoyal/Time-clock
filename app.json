@@ -1,0 +1,14 @@
+{
+  "name": "time-clock-api",
+  "scripts": {
+    "postdeploy": "cd server && npm install && npm run build"
+  },
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
