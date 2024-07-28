@@ -57,9 +57,10 @@ This command will install both the client and server dependencies.
 
 ### Running the Development Server
 
-To start the development server for both the client and server, run:
-
+To start the development server for both the client and server, run:  
+Go back to the root directory
 \`\`\`bash  
+cd ..  
 npm run start:dev  
 \`\`\`
 
