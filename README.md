@@ -41,6 +41,18 @@ cd time-clock
 npm install
 \`\`\`
 
+\`\`\`bash
+cd client
+\`\`\`
+npm install
+\`\`\`
+
+\`\`\`bash
+cd ../server
+\`\`\`
+npm install
+\`\`\`
+
 This command will install both the client and server dependencies.
 
 ## Usage
@@ -75,8 +87,8 @@ npm start
 
 ### Main Scripts
 
-- **\`npm start\`**: Starts both client and server in production mode.
 - **\`npm run start:dev\`**: Starts both client and server in development mode with hot reloading.
+- **\`npm start\`**: Starts both client and server in production mode.
 - **\`npm run build\`**: Builds both client and server for production.
 
 ### Client-Specific Scripts
