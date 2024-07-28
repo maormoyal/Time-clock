@@ -59,8 +59,8 @@ This command will install both the client and server dependencies.
 
 To start the development server for both the client and server, run:
 
-\`\`\`bash
-npm run start:dev
+\`\`\`bash  
+npm run start:dev  
 \`\`\`
 
 This will concurrently start the client and server in development mode.
@@ -69,16 +69,16 @@ This will concurrently start the client and server in development mode.
 
 To build the client and server for production, run:
 
-\`\`\`bash
-npm run build
+\`\`\`bash  
+npm run build  
 \`\`\`
 
 ### Running the Production Server
 
 To start the production server, run:
 
-\`\`\`bash
-npm start
+\`\`\`bash  
+npm start  
 \`\`\`
 
 ## Scripts
